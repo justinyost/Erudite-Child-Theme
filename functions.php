@@ -1,4 +1,6 @@
 <?php
+//Define the Child Template Directory
+define('CHILD_TEMPLATE_DIR', dirname( get_bloginfo('stylesheet_url')) );
 
 // Add stylesheets
 function add_stylesheets() {
@@ -7,7 +9,7 @@ function add_stylesheets() {
 	$stylesheetdir = get_bloginfo('stylesheet_directory');
 	?>
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo $templatedir ?>/css/erudiate-child.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo CHILD_TEMPLATE_DIR; ?>/css/erudiate-child.css" />
 	
 	<?php
 }
