@@ -23,6 +23,16 @@ function add_to_head(){
 	_add_my_open_id_information();
 }
 
+//Add Generic stuff to the sidebar
+function add_to_sidebar(){
+}
+
+//Add Generic stuff to the footer
+function add_to_footer(){
+}
+
 //Add Filters
 add_filter('wp_head', 'add_to_head');
+add_filter('wp_sidebar', 'add_to_sidebar');
+add_filter('wp_footer', 'add_to_footer');
 ?>
