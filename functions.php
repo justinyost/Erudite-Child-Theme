@@ -95,6 +95,7 @@ function add_to_head(){
 	_add_stylesheets();
 	_add_my_open_id_information();
 	_insert_short_url();
+	_add_favicons();
 }
 
 //Add Generic stuff to the sidebar
