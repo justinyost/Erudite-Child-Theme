@@ -19,16 +19,20 @@ function _add_my_open_id_information(){
 	endif;
 }
 
+function _add_favicons(){
+	?>
+	<link href="<?php echo get_bloginfo('url'); ?>favicon.ico" rel="shortcut icon">
+	<?php
+}
+
 //Add the Bit.ly Short URL or fallback to using the generic Wordpress Short URL
 function _insert_short_url(){
 	global $post;
 	if(is_single()){
 		$shortURL = return_short_url();
-		if(!empty($shortURL)) {
-			echo '<link rel="shortlink" href="'.$shortURL.'" />'."\n";
-		} else {
-			echo '<link rel="shortlink" href="'.get_bloginfo('url').'?p='.$post->ID.'" />'."\n";
-		}
+		?>
+		<link rel="shortlink" href="<?php echo $shortURL; ?>" />
+		<?php
 	}
 }
 
