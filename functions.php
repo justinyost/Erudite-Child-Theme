@@ -21,7 +21,7 @@ function _add_my_open_id_information(){
 
 function _add_favicons(){
 	?>
-	<link href="<?php echo get_bloginfo('url'); ?>favicon.ico" rel="shortcut icon">
+	<link href="<?php echo get_bloginfo('url'); ?>/favicon.ico" rel="shortcut icon">
 	<?php
 }
 
