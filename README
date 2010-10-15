@@ -1,1 +1,13 @@
 This is a Child Wordpress Theme to (The Erudite - http://somadesign.ca/projects/the-erudite/) to customize Yostivanich.com
+
+Currently does several things:
+1. Generates a Bit.ly Short URL for a post when published
+2. Shows the short url for a post in the header and also in the sidebar
+3. Allows you to use your Website as a delegate server for your MyOpenID account
+
+To Use:
+1. Add these lines to your wp-config file
+
+define('BITLY_USERNAME', 'YOUR_BITLY_USERNAME');
+define('BITLY_API_KEY', 'YOUR_BITLY_API_KEY');
+define('MYOPENID_SERVER', 'YOUR_MY_OPEN_ID_URL');
