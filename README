@@ -6,8 +6,5 @@ Currently does several things:
 3. Allows you to use your Website as a delegate server for your MyOpenID account
 
 To Use:
-1. Add these lines to your wp-config file
-
-define('BITLY_USERNAME', 'YOUR_BITLY_USERNAME');
-define('BITLY_API_KEY', 'YOUR_BITLY_API_KEY');
-define('MYOPENID_SERVER', 'YOUR_MY_OPEN_ID_URL');
+1. Upload as a normal theme
+2. Edit settings to use: Bit.ly short urls and MyOpenID delegate server

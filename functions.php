@@ -2,6 +2,8 @@
 //Define the Child Template Directory
 define('CHILD_TEMPLATE_DIR', dirname( get_bloginfo('stylesheet_url')) );
 
+require_once("library/theme-options.php");
+
 // Add stylesheets
 function _add_stylesheets() {
 	?>
@@ -11,11 +13,14 @@ function _add_stylesheets() {
 
 //Adds MyOpen ID Information to act as a delegate server
 function _add_my_open_id_information(){
-	if(defined(MYOPENID_SERVER)):
+	$options = get_theme_options();
+	
+	if(isset($options['my_open_id_url']) && !is_null($options['my_open_id_url'])):
 		?>
 		<link rel="openid.server" href="http://www.myopenid.com/server">
-		<link rel="openid.delegate" href="<?php echo MYOPENID_SERVER; ?>">
+		<link rel="openid.delegate" href="<?php echo $options['my_open_id_url']; ?>">
 		<?php
+	else:
 	endif;
 }
 
@@ -37,21 +42,21 @@ function _insert_short_url(){
 }
 
 //Create a Short URL
-function _create_short_url($postID = null){
-	global $wpdb;
+function _create_short_url($post_ID = null){	
+	$longURL = get_bloginfo('url').'?p='.$post_ID;
 	
-	$longURL = get_bloginfo('url').'?p='.$postID;
+	$options = get_theme_options();
 	
-	if(defined(BITLY_USERNAME) && defined(BITLY_USERNAME)){
-		$login = BITLY_USERNAME;
-		$apikey = BITLY_API_KEY;
+	if(isset($options['bitly_username']) && isset($options['bitly_api_key']) && !is_null($options['bitly_username']) && !is_null($options['bitly_api_key'])){
+		$login = $options['bitly_username'];
+		$apikey = $options['bitly_api_key'];
 		$shortURL = _get_bitly_url($longURL, $login, $apikey);
 	} else {
 		$shortURL = $longURL;
 	}
 	
 	// adding the short URL to a custom field called bitlyURL
-	update_post_meta($postID, 'bitlyURL', $shortURL);
+	update_post_meta($post_ID, 'bitlyURL', $shortURL);
 }
 
 //Generate the Bitly Short URL
@@ -107,8 +112,13 @@ function add_to_sidebar(){
 function add_to_footer(){
 }
 
-function add_on_publish(){
-	_create_short_url();
+function add_on_publish($post_ID){
+	_create_short_url($post_ID);
+}
+
+function get_theme_options(){
+	$options = get_option('erdt_child_theme_options');
+	return $options;
 }
 
 //Add Filters
