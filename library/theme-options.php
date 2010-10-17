@@ -14,7 +14,7 @@ function theme_options_init(){
  * Load up the menu page
  */
 function theme_options_add_page() {
-	add_theme_page( __( 'Theme Options' ), __( 'Theme Options' ), 'edit_theme_options', 'theme_options', 'theme_options_do_page' );
+	add_theme_page( __( 'Erudite Child Theme Options' ), __( 'Erudite Child Theme Options' ), 'edit_theme_options', 'theme_options', 'theme_options_do_page' );
 }
 
 /**
