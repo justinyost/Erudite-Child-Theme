@@ -1,13 +1,13 @@
 <?php
 //Define the Child Template Directory
-define('CHILD_TEMPLATE_DIR', dirname( get_bloginfo('stylesheet_url')) );
+define('CHILD_TEMPLATE_DIR', get_stylesheet_directory() );
 
-require_once("library/theme-options.php");
+require_once(CHILD_TEMPLATE_DIR."/library/theme-options.php");
 
 // Add stylesheets
 function _add_stylesheets() {
 	?>
-	<link rel="stylesheet" type="text/css" href="<?php echo CHILD_TEMPLATE_DIR; ?>/css/erudiate-child.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo CHILD_TEMPLATE_DIR; ?>/css/erudite-child.css" />
 	<?php
 }
 
