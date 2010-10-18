@@ -36,6 +36,7 @@ if ($first == 1 && !is_paged() ) { //this is for the first post on the homepage 
 					<?php the_tags( __( '<span class="tag-links">Tagged ', 'erudite' ), ", ", "</span>\n\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
 					<span class="meta-sep">|</span>
 					<span class="meta-shortlink">Short Link <?php echo return_short_link(); ?></span>
+					<?php edit_post_link( __( 'Edit', 'erudite' ), "\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
 					<span class="comments-link"><?php comments_popup_link( __( 'Comments (0)', 'erudite' ), __( 'Comments (1)', 'erudite' ), __( 'Comments (%)', 'erudite' ) ) ?></span>
 				</div>
 			</div><!-- .post -->
