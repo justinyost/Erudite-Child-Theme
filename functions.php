@@ -74,6 +74,7 @@ function _get_bitly_url($longURL, $login, $apikey){
 	curl_close($curl);
  
 	$shortURL =  $results->data->url; // the short URL
+	return $shortURL;
 }
 
 //Return the Short URL
