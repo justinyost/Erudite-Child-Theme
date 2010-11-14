@@ -32,7 +32,6 @@ function _add_favicons(){
 
 function _add_meta_tags(){
 	?>
-	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
 	<?php
 }
 
