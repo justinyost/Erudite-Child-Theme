@@ -30,6 +30,12 @@ function _add_favicons(){
 	<?php
 }
 
+function _add_meta_tags(){
+	?>
+	<meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
+	<?php
+}
+
 //Add the Bit.ly Short URL or fallback to using the generic Wordpress Short URL
 function _insert_short_url(){
 	global $post;
@@ -102,11 +108,11 @@ function add_to_head(){
 	_add_my_open_id_information();
 	_insert_short_url();
 	_add_favicons();
+	_add_meta_tags();
 }
 
 //Add Generic stuff to the sidebar
 function add_to_sidebar(){
-	_display_short_url();
 }
 
 //Add Generic stuff to the footer
