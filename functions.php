@@ -42,9 +42,15 @@ function _add_meta_tags(){
 		<meta name="author" content="<?php echo _get_author_complete_name($post->post_author); ?>" />
 		<meta name="keywords" content="<?php echo _get_post_tags($post->ID); ?>" />
 		<?php
+	} else if(is_front_page()) {
+		?>
+		<meta name="description" content="<?php echo get_option('blogdescription', "Just another WordPress Blog."); ?>" />
+		<?php
+	} else if(is_page()) {
+	
+	} else {
+	
 	}
-	?>
-	<?php
 }
 
 //Get a string represting the tags associated with a post
