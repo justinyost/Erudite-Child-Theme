@@ -2,6 +2,7 @@
 //Define the Child Template Directory
 define('CHILD_TEMPLATE_DIR', get_stylesheet_directory() );
 
+//Require the Theme Options
 require_once(CHILD_TEMPLATE_DIR."/library/theme-options.php");
 
 // Add stylesheets
@@ -24,15 +25,37 @@ function _add_my_open_id_information(){
 	endif;
 }
 
+//Add the favicons for the site
 function _add_favicons(){
 	?>
 	<link href="<?php echo get_bloginfo('url'); ?>/favicon.ico" rel="shortcut icon">
 	<?php
 }
 
+//Add Meta tags for a page
 function _add_meta_tags(){
+	global $post;
+	if(is_single()){
+		?>
+		<meta name="description" content="<?php echo $post->post_excerpt; ?>" />
+		<meta name="revised" content="<?php echo $post->post_modified_gmt; ?>" />
+		<meta name="author" content="<?php echo _get_author_complete_name($post->post_author); ?>" />
+		<meta name="keywords" content="<?php echo _get_post_tags($post->ID); ?>" />
+		<?php
+	}
 	?>
 	<?php
+}
+
+//Get a string represting the tags associated with a post
+function _get_post_tags($post_ID = null){
+	$tags = wp_get_post_tags($post_ID);
+	$tags_string = null;
+	foreach($tags as $tag){
+		$tags_string = $tags_string.$tag->name.", ";
+	}
+	$tags_string = rtrim($tags_string, ', ');
+	return $tags_string;
 }
 
 //Add the Bit.ly Short URL or fallback to using the generic Wordpress Short URL
@@ -44,6 +67,13 @@ function _insert_short_url(){
 		<link rel="shortlink" href="<?php echo $shortURL; ?>" />
 		<?php
 	}
+}
+
+//Get a user's nicely formatted name
+function _get_author_complete_name($author_ID = null){
+	$author_info = get_userdata($author_ID);
+	$author_name = $author_info->user_nicename;
+	return $author_name;
 }
 
 //Create a Short URL
