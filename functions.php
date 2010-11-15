@@ -72,7 +72,7 @@ function _insert_short_url(){
 //Get a user's nicely formatted name
 function _get_author_complete_name($author_ID = null){
 	$author_info = get_userdata($author_ID);
-	$author_name = $author_info->user_nicename;
+	$author_name = $author_info->display_name;
 	return $author_name;
 }
 
