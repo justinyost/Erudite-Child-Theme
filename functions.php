@@ -8,7 +8,7 @@ require_once(CHILD_TEMPLATE_DIR."/library/theme-options.php");
 // Add stylesheets
 function _add_stylesheets() {
 	?>
-	<link rel="stylesheet" type="text/css" href="<?php echo CHILD_TEMPLATE_DIR; ?>/css/erudite-child.css" />
+	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_directory'); ?>/css/erudite-child.css" />
 	<?php
 }
 
@@ -118,6 +118,17 @@ function _get_bitly_url($longURL, $login, $apikey){
 	return $shortURL;
 }
 
+//Set Extra Contact Information
+function extra_contact_info($contactmethods) {
+	unset($contactmethods['aim']);
+	unset($contactmethods['yim']);
+	unset($contactmethods['jabber']);
+	$contactmethods['facebook'] = 'Facebook';
+	$contactmethods['twitter'] = 'Twitter';
+	$contactmethods['linkedin'] = 'LinkedIn';
+	return $contactmethods;
+}
+
 //Return the Short URL
 function return_short_url() {
 	global $post;
@@ -168,6 +179,7 @@ add_filter('wp_head', 'add_to_head');
 add_filter('wp_sidebar', 'add_to_sidebar');
 add_filter('wp_footer', 'add_to_footer');
 add_filter('wp_get_shortlink', 'return_short_url');
+add_filter('user_contactmethods', 'extra_contact_info');
 
 //Remove Actions
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
