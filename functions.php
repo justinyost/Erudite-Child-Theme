@@ -18,8 +18,8 @@ function _add_my_open_id_information(){
 	
 	if(isset($options['my_open_id_url']) && !is_null($options['my_open_id_url'])):
 		?>
-		<link rel="openid.server" href="http://www.myopenid.com/server">
-		<link rel="openid.delegate" href="<?php echo $options['my_open_id_url']; ?>">
+		<link rel="openid.server" href="http://www.myopenid.com/server" />
+		<link rel="openid.delegate" href="<?php echo $options['my_open_id_url']; ?>" />
 		<?php
 	else:
 	endif;
