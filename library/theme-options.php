@@ -1,4 +1,5 @@
 <?php
+// Adapted from http://planetozh.com/blog/2009/05/handling-plugins-options-in-wordpress-28-with-register_setting/
 
 add_action( 'admin_init', 'theme_options_init' );
 add_action( 'admin_menu', 'theme_options_add_page' );
@@ -53,10 +54,16 @@ function theme_options_do_page() {
 					</td>
 				</tr>
 				
-				<tr valign="top"><th scope="row"><?php _e( 'MyOpenID URL' ); ?></th>
+				<tr valign="top"><th scope="row"><?php _e( 'Open ID Server URL' ); ?></th>
 					<td>
-						<input id="erdt_child_theme_options[my_open_id_url]" class="regular-text" type="text" name="erdt_child_theme_options[my_open_id_url]" value="<?php esc_attr_e( $options['my_open_id_url'] ); ?>" />
-						<label class="description" for="erdt_child_theme_options[my_open_id_url]"><?php _e( 'Enter in your MyOpenID Url, to use your site\'s url as a delegate server. More info here: <a href="http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication" target="_blank" title="OpenID Delegate Server">http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication</a>' ); ?></label>
+						<input id="erdt_child_theme_options[open_id_server]" class="regular-text" type="text" name="erdt_child_theme_options[open_id_server]" value="<?php esc_attr_e( $options['open_id_server'] ); ?>" />
+						<label class="description" for="erdt_child_theme_options[open_id_server]"><?php _e( 'Enter in your OpenID Server URL, to use your site\'s url as a delegate server. For example if using MyOpenId, enter in http://www.myopenid.com/server/. More info here: <a href="http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication" target="_blank" title="OpenID Delegate Server">http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication</a>' ); ?></label>
+					</td>
+				</tr>
+				<tr valign="top"><th scope="row"><?php _e( 'OpenID Delegate URL' ); ?></th>
+					<td>
+						<input id="erdt_child_theme_options[open_id_delegate]" class="regular-text" type="text" name="erdt_child_theme_options[open_id_delegate]" value="<?php esc_attr_e( $options['open_id_delegate'] ); ?>" />
+						<label class="description" for="erdt_child_theme_options[open_id_delegate]"><?php _e( 'Enter in your OpenID Delegate Url, to use your site\'s url as a delegate server. For example if using MyOpenId, enter in http://username.myopenid.com/. More info here: <a href="http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication" target="_blank" title="OpenID Delegate Server">http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication</a>' ); ?></label>
 					</td>
 				</tr>
 			</table>
@@ -77,7 +84,8 @@ function theme_options_validate( $input ) {
 	//Sanitize Input Text
 	$input['bitly_username'] = wp_filter_nohtml_kses( $input['bitly_username'] );
 	$input['bitly_api_key'] = wp_filter_nohtml_kses( $input['bitly_api_key'] );
-	$input['my_open_id_url'] = wp_filter_nohtml_kses( $input['my_open_id_url'] );
+	$input['open_id_server'] = wp_filter_nohtml_kses( $input['open_id_server'] );
+	$input['open_id_delegate'] = wp_filter_nohtml_kses( $input['open_id_delegate'] );
 	
 	/*
 	// Our checkbox value is either 0 or 1
@@ -104,5 +112,3 @@ function theme_options_validate( $input ) {
 
 	return $input;
 }
-
-// adapted from http://planetozh.com/blog/2009/05/handling-plugins-options-in-wordpress-28-with-register_setting/

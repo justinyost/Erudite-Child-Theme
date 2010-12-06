@@ -16,10 +16,10 @@ function _add_stylesheets() {
 function _add_my_open_id_information(){
 	$options = get_theme_options();
 	
-	if(isset($options['my_open_id_url']) && !is_null($options['my_open_id_url'])):
+	if(isset($options['open_id_server']) && !is_null($options['open_id_server']) && isset($options['open_id_delegate']) && !is_null($options['open_id_delegate'])):
 		?>
-		<link rel="openid.server" href="http://www.myopenid.com/server" />
-		<link rel="openid.delegate" href="<?php echo $options['my_open_id_url']; ?>" />
+		<link rel="openid.server" href="<?php echo $options['open_id_server']; ?>" />
+		<link rel="openid.delegate" href="<?php echo $options['open_id_delegate']; ?>" />
 		<?php
 	else:
 	endif;
