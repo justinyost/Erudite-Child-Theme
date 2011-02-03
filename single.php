@@ -8,9 +8,8 @@
 			<div id="post-<?php the_ID() ?>" <?php post_class() ?>>
 				<h2 class="entry-title instapaper_title"><?php the_title() ?></h2>
 				<div class="entry-content instapaper_body">
-<?php the_content() ?>
-
-<?php wp_link_pages('before=<div class="page-link instapaper_ignore">' . __( 'Pages:', 'erudite' ) . '&after=</div>') ?>
+					<?php the_content() ?>
+					<?php wp_link_pages('before=<div class="page-link instapaper_ignore">' . __( 'Pages:', 'erudite' ) . '&after=</div>') ?>
 				</div>
 				<div class="entry-meta">
 					<span class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php unset($previousday); printf( __( '%1$s &#8211; %2$s', 'erudite' ), the_date( '', '', '', false ), get_the_time() ) ?></abbr></span>
@@ -35,7 +34,7 @@
 				<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">&rarr;</span>' ) ?></div>
 			</div>
 
-<?php comments_template() ?>
+			<?php comments_template() ?>
 
 		</div><!-- #content -->
 	</div><!-- #container -->

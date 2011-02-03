@@ -1,8 +1,6 @@
 <?php get_header() ?>
-
-	<div id="container">
-		<div id="content" role="main">
-
+<div id="container">
+	<div id="content" role="main">
 <?php 
 $first = 0; //set a counter to help add post classes below ?>
 <?php while ( have_posts() ) : the_post() ?>
@@ -10,17 +8,20 @@ $first = 0; //set a counter to help add post classes below ?>
 if ($first == 1 && !is_paged() ) { //this is for the first post on the homepage only ?>
 	<?php erdt_epigraph() ?>
 	<div id="post-<?php the_ID() ?>" <?php post_class("first-post") ?>>
-		<h2 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf( __('Permalink to %s', 'erudite'), the_title_attribute('echo=0') ) ?>" rel="bookmark"><?php the_title() ?></a></h2>
+		<h2 class="entry-title">
+			<a href="<?php the_permalink() ?>" title="<?php printf( __('Permalink to %s', 'erudite'), the_title_attribute('echo=0') ) ?>" rel="bookmark"><?php the_title() ?></a>
+		</h2>
 		<div class="entry-content">
-
 <?php the_content( __( 'Read More <span class="meta-nav">&rarr;</span>', 'erudite' ) );
 
 } else { //subsequent posts on the homepage, all is_paged() posts as well ?>
 	<?php $home_pager = ( ! is_paged() ) ? "home-post home-post-".$first : ''; //add home-post classes on front page only ?>
 	<div id="post-<?php the_ID() ?>" <?php post_class($home_pager); ?>>
-		<h3 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf( __('Permalink to %s', 'erudite'), the_title_attribute('echo=0') ) ?>" rel="bookmark"><?php the_title() ?></a></h3>
+		<h3 class="entry-title">
+			<a href="<?php the_permalink() ?>" title="<?php printf( __('Permalink to %s', 'erudite'), the_title_attribute('echo=0') ) ?>" rel="bookmark"><?php the_title() ?></a>
+		</h3>
 		<div class="entry-content">
-<?php the_excerpt(); ?>
+			<?php the_excerpt(); ?>
 			<p class="more-link"><a href="<?php the_permalink() ?>" title="<?php printf(__('Keep reading &lsquo;%s&rsquo;', 'erudite' ), the_title_attribute('echo=0') ) ?>"><?php _e('Read More <span class="meta-nav">&rarr;</span>', 'erudite' ) ?></a></p>
 <?php } ?>
 			<hr />
@@ -41,7 +42,7 @@ if ($first == 1 && !is_paged() ) { //this is for the first post on the homepage 
 				</div>
 			</div><!-- .post -->
 
-<?php comments_template() ?>
+			<?php comments_template() ?>
 
 <?php endwhile; ?>
 
