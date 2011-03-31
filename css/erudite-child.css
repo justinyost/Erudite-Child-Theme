@@ -50,3 +50,8 @@
 /* Media Specific Queries */
 @media screen and (max-device-width: 480px) {
 }
+
+/* Widgets */
+.twtr-widget, .footer ul div div.twtr-widget {
+	font-size: 12px !important;
+}
