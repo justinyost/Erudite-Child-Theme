@@ -43,6 +43,8 @@ function _add_meta_tags(){
 		<meta name="revised" content="<?php echo $post->post_modified_gmt; ?>" />
 		<meta name="author" content="<?php echo _get_author_complete_name($post->post_author); ?>" />
 		<meta name="keywords" content="<?php echo _get_post_tags($post->ID); ?>" />
+		<meta property="og:title" content="<?php echo $post->post_title; ?>" />
+		<meta property="og:url" content="<?php echo get_permalink($post->ID); ?>" />
 		<?php
 	} else if(is_front_page()) {
 		?>
@@ -54,9 +56,11 @@ function _add_meta_tags(){
 	
 	}
 	?>
-		<?php if(_is_readability_set()): ?>
-			<meta name="readability-verification" content="<?php echo _get_readability_verification_code(); ?>"/>
-		<?php endif; ?>
+	<?php if(_is_readability_set()): ?>
+		<meta name="readability-verification" content="<?php echo _get_readability_verification_code(); ?>"/>
+	<?php endif; ?>
+	<meta property="og:site_name" content="<?php echo get_option('blogname'); ?>" />
+	<meta property="og:type" content="blog" />
 	<?php
 }
 
