@@ -36,7 +36,10 @@ function _add_favicons(){
 
 //Add Meta tags for a page
 function _add_meta_tags(){
+	
 	global $post;
+	$options = get_theme_options();
+	
 	if(is_single()){
 		?>
 		<meta name="description" content="<?php echo $post->post_excerpt; ?>" />
@@ -100,7 +103,11 @@ function _get_author_complete_name($author_ID = null){
  * @return void
  */
 function _is_readability_set(){
-	return isset($options['readability_verification_code']);
+	$options = get_theme_options();
+	return (
+		isset($options['readability_verification_code']) &&
+		!empty($options['readability_verification_code'])
+	);
 }
 
 /**
@@ -110,6 +117,7 @@ function _is_readability_set(){
  * @return void
  */
 function _get_readability_verification_code(){
+	$options = get_theme_options();
 	return $options['readability_verification_code'];
 }
 

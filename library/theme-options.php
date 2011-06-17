@@ -93,6 +93,7 @@ function theme_options_validate( $input ) {
 	$input['bitly_api_key'] = wp_filter_nohtml_kses( $input['bitly_api_key'] );
 	$input['open_id_server'] = wp_filter_nohtml_kses( $input['open_id_server'] );
 	$input['open_id_delegate'] = wp_filter_nohtml_kses( $input['open_id_delegate'] );
+	$input['readability_verification_code'] = wp_filter_nohtml_kses( $input['readability_verification_code'] );
 	
 	/*
 	// Our checkbox value is either 0 or 1
