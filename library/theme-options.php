@@ -66,6 +66,13 @@ function theme_options_do_page() {
 						<label class="description" for="erdt_child_theme_options[open_id_delegate]"><?php _e( 'Enter in your OpenID Delegate Url, to use your site\'s url as a delegate server. For example if using MyOpenId, enter in http://username.myopenid.com/. More info here: <a href="http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication" target="_blank" title="OpenID Delegate Server">http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication</a>' ); ?></label>
 					</td>
 				</tr>
+				
+				<tr valign="top"><th scope="row"><?php _e( 'Readability Verification Code' ); ?></th>
+					<td>
+						<input id="erdt_child_theme_options[readability_verification_code]" class="regular-text" type="text" name="erdt_child_theme_options[readability_verification_code]" value="<?php esc_attr_e( $options['readability_verification_code'] ); ?>" />
+						<label class="description" for="erdt_child_theme_options[readability_verification_code]"><?php _e( 'Enter your <a href="https://www.readability.com/publishers/register/" target="_blank" title="Get Your Readability Verification Code">Readability Verification Code</a>' ); ?></label>
+					</td>
+				</tr>
 			</table>
 
 			<p class="submit">

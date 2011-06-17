@@ -53,6 +53,11 @@ function _add_meta_tags(){
 	} else {
 	
 	}
+	?>
+		<?php if(_is_readability_set()): ?>
+			<meta name="readability-verification" content="<?php echo _get_readability_verification_code(); ?>"/>
+		<?php endif; ?>
+	<?php
 }
 
 //Get a string represting the tags associated with a post
@@ -84,13 +89,41 @@ function _get_author_complete_name($author_ID = null){
 	return $author_name;
 }
 
-//Create a Short URL
+/**
+ * _is_readability_set function.
+ * 
+ * @access private
+ * @return void
+ */
+function _is_readability_set(){
+	return isset($options['readability_verification_code']);
+}
+
+/**
+ * _get_readability_verification_code function.
+ * 
+ * @access private
+ * @return void
+ */
+function _get_readability_verification_code(){
+	return $options['readability_verification_code'];
+}
+
+/**
+ * _create_short_url function.
+ *
+ * Creates a Short Url for the Post
+ * 
+ * @access private
+ * @param mixed $post_ID (default: null)
+ * @return void
+ */
 function _create_short_url($post_ID = null){	
 	$longURL = get_bloginfo('url').'?p='.$post_ID;
 	
 	$options = get_theme_options();
 	
-	if(isset($options['bitly_username']) && isset($options['bitly_api_key']) && !is_null($options['bitly_username']) && !is_null($options['bitly_api_key'])){
+	if(_is_bitly_information_set()){
 		$login = $options['bitly_username'];
 		$apikey = $options['bitly_api_key'];
 		$shortURL = _get_bitly_url($longURL, $login, $apikey);
@@ -102,7 +135,34 @@ function _create_short_url($post_ID = null){
 	update_post_meta($post_ID, 'bitlyURL', $shortURL);
 }
 
-//Generate the Bitly Short URL
+/**
+ * _is_bitly_information_set function.
+ *
+ * Return if the Bit.ly Information is set
+ * 
+ * @access private
+ * @return void
+ */
+function _is_bitly_information_set(){
+	return (
+		isset($options['bitly_username']) &&
+		isset($options['bitly_api_key']) &&
+		!is_null($options['bitly_username']) &&
+		!is_null($options['bitly_api_key'])
+	);
+}
+
+/**
+ * _get_bitly_url function.
+ * 
+ * Generate the Bitly Short URL
+ *
+ * @access private
+ * @param mixed $longURL
+ * @param mixed $login
+ * @param mixed $apikey
+ * @return void
+ */
 function _get_bitly_url($longURL, $login, $apikey){
 	
 	// This is the API call to fetch the shortened URL
@@ -120,7 +180,15 @@ function _get_bitly_url($longURL, $login, $apikey){
 	return $shortURL;
 }
 
-//Set Extra Contact Information
+/**
+ * extra_contact_info function.
+ * 
+ * Set Extra Contact Information
+ *
+ * @access public
+ * @param mixed $contactmethods
+ * @return void
+ */
 function extra_contact_info($contactmethods) {
 	unset($contactmethods['aim']);
 	unset($contactmethods['yim']);
