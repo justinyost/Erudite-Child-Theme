@@ -5,15 +5,25 @@ define('CHILD_TEMPLATE_DIR', get_stylesheet_directory() );
 //Require the Theme Options
 require_once(CHILD_TEMPLATE_DIR."/library/theme-options.php");
 
-// Add stylesheets
-function _add_stylesheets() {
+/**
+ * add_stylesheets function.
+ * 
+ * @access public
+ * @return void
+ */
+function add_stylesheets() {
 	?>
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_directory'); ?>/css/erudite-child.css" />
 	<?php
 }
 
-//Adds MyOpen ID Information to act as a delegate server
-function _add_my_open_id_information(){
+/**
+ * add_my_open_id_information function.
+ * 
+ * @access public
+ * @return void
+ */
+function add_my_open_id_information(){
 	$options = get_theme_options();
 	
 	if(isset($options['open_id_server']) && !is_null($options['open_id_server']) && isset($options['open_id_delegate']) && !is_null($options['open_id_delegate'])):
@@ -27,15 +37,25 @@ function _add_my_open_id_information(){
 	endif;
 }
 
-//Add the favicons for the site
-function _add_favicons(){
+/**
+ * add_favicons function.
+ * 
+ * @access public
+ * @return void
+ */
+function add_favicons(){
 	?>
 	<link href="<?php echo get_bloginfo('url'); ?>/favicon.ico" rel="shortcut icon" />
 	<?php
 }
 
-//Add Meta tags for a page
-function _add_meta_tags(){
+/**
+ * add_meta_tags function.
+ * 
+ * @access public
+ * @return void
+ */
+function add_meta_tags(){
 	
 	global $post;
 	$options = get_theme_options();
@@ -44,8 +64,8 @@ function _add_meta_tags(){
 		?>
 		<meta name="description" content="<?php echo $post->post_excerpt; ?>" />
 		<meta name="revised" content="<?php echo $post->post_modified_gmt; ?>" />
-		<meta name="author" content="<?php echo _get_author_complete_name($post->post_author); ?>" />
-		<meta name="keywords" content="<?php echo _get_post_tags($post->ID); ?>" />
+		<meta name="author" content="<?php echo get_author_complete_name($post->post_author); ?>" />
+		<meta name="keywords" content="<?php echo get_post_tags($post->ID); ?>" />
 		<meta property="og:title" content="<?php echo $post->post_title; ?>" />
 		<meta property="og:url" content="<?php echo get_permalink($post->ID); ?>" />
 		<?php
@@ -59,16 +79,22 @@ function _add_meta_tags(){
 	
 	}
 	?>
-	<?php if(_is_readability_set()): ?>
-		<meta name="readability-verification" content="<?php echo _get_readability_verification_code(); ?>"/>
+	<?php if(is_readability_set()): ?>
+		<meta name="readability-verification" content="<?php echo get_readability_verification_code(); ?>"/>
 	<?php endif; ?>
 	<meta property="og:site_name" content="<?php echo get_option('blogname'); ?>" />
 	<meta property="og:type" content="blog" />
 	<?php
 }
 
-//Get a string represting the tags associated with a post
-function _get_post_tags($post_ID = null){
+/**
+ * get_post_tags function.
+ * 
+ * @access public
+ * @param mixed $post_ID (default: null)
+ * @return void
+ */
+function get_post_tags($post_ID = null){
 	$tags = wp_get_post_tags($post_ID);
 	$tags_string = null;
 	foreach($tags as $tag){
@@ -78,8 +104,13 @@ function _get_post_tags($post_ID = null){
 	return $tags_string;
 }
 
-//Add the Bit.ly Short URL or fallback to using the generic Wordpress Short URL
-function _insert_short_url(){
+/**
+ * insert_short_url function.
+ * 
+ * @access public
+ * @return void
+ */
+function insert_short_url(){
 	global $post;
 	if(is_single()){
 		$shortURL = return_short_url();
@@ -89,20 +120,26 @@ function _insert_short_url(){
 	}
 }
 
-//Get a user's nicely formatted name
-function _get_author_complete_name($author_ID = null){
+/**
+ * get_author_complete_name function.
+ * 
+ * @access public
+ * @param mixed $author_ID (default: null)
+ * @return void
+ */
+function get_author_complete_name($author_ID = null){
 	$author_info = get_userdata($author_ID);
 	$author_name = $author_info->display_name;
 	return $author_name;
 }
 
 /**
- * _is_readability_set function.
+ * is_readability_set function.
  * 
  * @access private
  * @return void
  */
-function _is_readability_set(){
+function is_readability_set(){
 	$options = get_theme_options();
 	return (
 		isset($options['readability_verification_code']) &&
@@ -111,18 +148,18 @@ function _is_readability_set(){
 }
 
 /**
- * _get_readability_verification_code function.
+ * get_readability_verification_code function.
  * 
  * @access private
  * @return void
  */
-function _get_readability_verification_code(){
+function get_readability_verification_code(){
 	$options = get_theme_options();
 	return $options['readability_verification_code'];
 }
 
 /**
- * _create_short_url function.
+ * create_short_url function.
  *
  * Creates a Short Url for the Post
  * 
@@ -130,15 +167,17 @@ function _get_readability_verification_code(){
  * @param mixed $post_ID (default: null)
  * @return void
  */
-function _create_short_url($post_ID = null){	
+function create_short_url($post_ID = null){	
 	$longURL = get_bloginfo('url').'?p='.$post_ID;
 	
-	$options = get_theme_options();
-	
-	if(_is_bitly_information_set()){
+	$shortURL = null;
+	if( is_bitly_information_set() ) {
+		$options = get_theme_options();
+		
 		$login = $options['bitly_username'];
 		$apikey = $options['bitly_api_key'];
-		$shortURL = _get_bitly_url($longURL, $login, $apikey);
+		
+		$shortURL = get_bitly_url($longURL, $login, $apikey);
 	} else {
 		$shortURL = $longURL;
 	}
@@ -148,24 +187,26 @@ function _create_short_url($post_ID = null){
 }
 
 /**
- * _is_bitly_information_set function.
+ * is_bitly_information_set function.
  *
  * Return if the Bit.ly Information is set
  * 
  * @access private
  * @return void
  */
-function _is_bitly_information_set(){
+function is_bitly_information_set(){
+	$options = get_theme_options();
+	
 	return (
 		isset($options['bitly_username']) &&
 		isset($options['bitly_api_key']) &&
-		!is_null($options['bitly_username']) &&
-		!is_null($options['bitly_api_key'])
+		!empty($options['bitly_username']) &&
+		!empty($options['bitly_api_key'])
 	);
 }
 
 /**
- * _get_bitly_url function.
+ * get_bitly_url function.
  * 
  * Generate the Bitly Short URL
  *
@@ -175,7 +216,7 @@ function _is_bitly_information_set(){
  * @param mixed $apikey
  * @return void
  */
-function _get_bitly_url($longURL, $login, $apikey){
+function get_bitly_url($longURL, $login, $apikey){
 	
 	// This is the API call to fetch the shortened URL
 	$apiurl = 'http://api.bit.ly/v3/shorten?longUrl='.urlencode($longURL).'&login='.$login.'&apiKey='.$apikey.'&format=json';
@@ -188,7 +229,7 @@ function _get_bitly_url($longURL, $login, $apikey){
 	$results = json_decode(curl_exec($curl));
 	curl_close($curl);
  
-	$shortURL =  $results->data->url; // the short URL
+	$shortURL =  $results->data->url;
 	return $shortURL;
 }
 
@@ -211,7 +252,12 @@ function extra_contact_info($contactmethods) {
 	return $contactmethods;
 }
 
-//Return the Short URL
+/**
+ * return_short_url function.
+ * 
+ * @access public
+ * @return void
+ */
 function return_short_url() {
 	global $post;
 	$shortURL = get_post_meta($post->ID, 'bitlyURL', true);
@@ -222,7 +268,12 @@ function return_short_url() {
 	}
 }
 
-//Return the Short Link
+/**
+ * return_short_link function.
+ * 
+ * @access public
+ * @return void
+ */
 function return_short_link(){
 	$shortURL = return_short_url();
 	global $post;
@@ -230,28 +281,56 @@ function return_short_link(){
 	return $shortLink;
 }
 
-//Add Generic stuff to the head
+/**
+ * add_to_head function.
+ * 
+ * @access public
+ * @return void
+ */
 function add_to_head(){
-	_add_stylesheets();
-	_add_my_open_id_information();
-	_insert_short_url();
-	_add_favicons();
-	_add_meta_tags();
+	add_stylesheets();
+	add_my_open_id_information();
+	insert_short_url();
+	add_favicons();
+	add_meta_tags();
 }
 
-//Add Generic stuff to the sidebar
+/**
+ * add_to_sidebar function.
+ * 
+ * @access public
+ * @return void
+ */
 function add_to_sidebar(){
 }
 
-//Add Generic stuff to the footer
+/**
+ * add_to_footer function.
+ * 
+ * @access public
+ * @return void
+ */
 function add_to_footer(){
 }
 
-function add_on_publish($post_ID){
-	_create_short_url($post_ID);
+/**
+ * add_on_publish function.
+ * 
+ * @access public
+ * @param mixed $post_ID
+ * @return void
+ */
+function add_on_publish($post_ID) {
+	create_short_url($post_ID);
 }
 
-function get_theme_options(){
+/**
+ * get_theme_options function.
+ * 
+ * @access public
+ * @return void
+ */
+function get_theme_options() {
 	$options = get_option('erdt_child_theme_options');
 	return $options;
 }
