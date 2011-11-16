@@ -291,7 +291,7 @@ function censored_bar(){
 	$options = get_theme_options();
 	
 	if($options['censored_bar'] == TRUE){
-		?><a style="width:100%;height:105px;vertical-align:middle;text-align:center;background-color:#000;position:absolute;z-index:5555;top:0px;left:0px;background-image:url(http://americancensorship.org/images/stop-censorship-small.png);background-position:center center;background-repeat:no-repeat;" href="http://americancensorship.org"></a><?php
+		?><a style="width:100%;height:77px;vertical-align:middle;text-align:center;background-color:#000;position:absolute;z-index:5555;top:0px;left:0px;background-image:url(http://americancensorship.org/images/stop-censorship-small.png);background-position:center center;background-repeat:no-repeat;" href="http://americancensorship.org"></a><?php
 	}
 }
 
