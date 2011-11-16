@@ -38,7 +38,7 @@ function theme_options_do_page() {
 		<form method="post" action="options.php">
 			<?php settings_fields( 'erdt_child_options' ); ?>
 			<?php $options = get_option( 'erdt_child_theme_options' ); ?>
-
+			<h2>Social Media Links</h2>
 			<table class="form-table">
 				<tr valign="top"><th scope="row"><?php _e( 'Bit.ly Username' ); ?></th>
 					<td>
@@ -74,6 +74,16 @@ function theme_options_do_page() {
 					</td>
 				</tr>
 			</table>
+			<h2>Other Settings</h2>
+				<table class="form-table">
+					<tr valign="top"><th scope="row"><?php _e( 'Censored Website Bar' ); ?></th>
+						<td>
+							<input id="erdt_child_theme_options[censored_bar]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[censored_bar]" value="1" <?php if($options['censored_bar'] == TRUE): ?> checked <?php endif; ?> />
+							<label class="description" for="erdt_child_theme_options[censored_bar]"><?php _e( 'Turn on the <a href="http://americancensorship.org/" title="American Censorship Day">Censored Website Bar</a>' ); ?></label>
+						</td>
+					</tr>
+				</table>
+			
 
 			<p class="submit">
 				<input type="submit" class="button-primary" value="<?php _e( 'Save Options' ); ?>" />
@@ -94,6 +104,10 @@ function theme_options_validate( $input ) {
 	$input['open_id_server'] = wp_filter_nohtml_kses( $input['open_id_server'] );
 	$input['open_id_delegate'] = wp_filter_nohtml_kses( $input['open_id_delegate'] );
 	$input['readability_verification_code'] = wp_filter_nohtml_kses( $input['readability_verification_code'] );
+	
+	if ( ! isset( $input['censored_bar'] ) )
+		$input['censored_bar'] = null;
+	$input['censored_bar'] = ( $input['censored_bar'] == 1 ? 1 : 0 );
 	
 	/*
 	// Our checkbox value is either 0 or 1
