@@ -6,4 +6,27 @@
 * AUTHOR URI: http://www.yostivanich.com/
 * TEMPLATE:  the-erudite
 */
+
+/* For modern browsers */
+/* float clearing for IE6 */
+* html .clearfix{
+  height: 1%;
+  overflow: visible;
+}
+
+/* float clearing for IE7 */
+*+html .clearfix{
+  min-height: 1%;
+}
+
+/* float clearing for everyone else */
+.clearfix:after{
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  font-size: 0;
+}
+
  @import url(../the-erudite/style.css);
