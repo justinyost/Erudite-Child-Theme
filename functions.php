@@ -46,6 +46,18 @@ function add_my_open_id_information(){
 function add_favicons(){
 	?>
 	<link href="<?php echo get_bloginfo('url'); ?>/favicon.ico" rel="shortcut icon" />
+	<?php if(get_iphone_non_retina_icon()): ?>
+		<link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-57x57-precomposed.png" /> 
+	<?php endif; ?>
+	<?php if(get_iphone_retina_icon()): ?>
+		<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-72x72-precomposed.png" /> 
+	<?php endif; ?>
+	<?php if(get_ipad_non_retina_icon()): ?>
+		<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-114x114-precomposed.png" />	
+	<?php endif; ?>
+	<?php if(get_ipad_retina_icon()): ?>
+		<link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-144x144-precomposed.png" />
+	<?php endif; ?>
 	<?php
 }
 
@@ -156,6 +168,50 @@ function is_readability_set(){
 function get_readability_verification_code(){
 	$options = get_theme_options();
 	return $options['readability_verification_code'];
+}
+
+/**
+ * get_iphone_non_retina_icon function.
+ * 
+ * @access public
+ * @return void
+ */
+function get_iphone_non_retina_icon() {
+	$options = get_theme_options();
+	return $options['apple_touch_icon_iphone_non_retina'];
+}
+
+/**
+ * get_iphone_retina_icon function.
+ * 
+ * @access public
+ * @return void
+ */
+function get_iphone_retina_icon() {
+	$options = get_theme_options();
+	return $options['apple_touch_icon_iphone_retina'];
+}
+
+/**
+ * get_ipad_non_retina_icon function.
+ * 
+ * @access public
+ * @return void
+ */
+function get_ipad_non_retina_icon() {
+	$options = get_theme_options();
+	return $options['apple_touch_icon_ipad_non_retina'];
+}
+
+/**
+ * get_ipad_retina_icon function.
+ * 
+ * @access public
+ * @return void
+ */
+function get_ipad_retina_icon() {
+	$options = get_theme_options();
+	return $options['apple_touch_icon_ipad_retina'];
 }
 
 /**
