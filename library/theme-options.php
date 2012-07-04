@@ -63,7 +63,7 @@ function theme_options_do_page() {
 				<tr valign="top"><th scope="row"><?php _e( 'OpenID Delegate URL' ); ?></th>
 					<td>
 						<input id="erdt_child_theme_options[open_id_delegate]" class="regular-text" type="text" name="erdt_child_theme_options[open_id_delegate]" value="<?php esc_attr_e( $options['open_id_delegate'] ); ?>" />
-						<label class="description" for="erdt_child_theme_options[open_id_delegate]"><?php _e( 'Enter in your OpenID Delegate Url, to use your site\'s url as a delegate server. For example if using MyOpenId, enter in http://username.myopenid.com/. More info here: <a href="http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication" target="_blank" title="OpenID Delegate Server">http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication</a>' ); ?></label>
+						<label class="description" for="erdt_child_theme_options[open_id_delegate]"><?php _e( 'Enter in your OpenID Delegate Url, to use your site\'s url as a delegate server. For example if using MyOpenId, enter in http://{username}.myopenid.com/. More info here: <a href="http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication" target="_blank" title="OpenID Delegate Server">http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication</a>' ); ?></label>
 					</td>
 				</tr>
 
@@ -77,19 +77,19 @@ function theme_options_do_page() {
 							<label class="description" for="erdt_child_theme_options[apple_touch_icon_iphone_non_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 57x57 pixels, in the webroot directory and named apple-touch-icon-57x57-precomposed.png). Sized for the iPhone Non-Retina Screen.' ); ?></label>
 						</td>
 					</tr>
-					<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon 114x114' ); ?></th>
+					<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 114x114' ); ?></th>
 						<td>
 							<input id="erdt_child_theme_options[apple_touch_icon_iphone_retina]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[apple_touch_icon_iphone_retina]" value="1" <?php if($options['apple_touch_icon_iphone_retina'] == TRUE): ?> checked <?php endif; ?> />
 							<label class="description" for="erdt_child_theme_options[apple_touch_icon_iphone_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 114x114 pixels, in the webroot directory and named apple-touch-icon-114x114-precomposed.png). Sized for the iPhone Retina Screen.' ); ?></label>
 						</td>
 					</tr>
-					<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon 72x72' ); ?></th>
+					<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 72x72' ); ?></th>
 						<td>
 							<input id="erdt_child_theme_options[apple_touch_icon_ipad_non_retina]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[apple_touch_icon_ipad_non_retina]" value="1" <?php if($options['apple_touch_icon_ipad_non_retina'] == TRUE): ?> checked <?php endif; ?> />
-							<label class="description" for="erdt_child_theme_options[apple_touch_icon_ipad_non_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 72x72 pixels, in the webroot directory and named apple-touch-icon-144x144-precomposed.png). Sized for the iPad Non-Retina Screen.' ); ?></label>
+							<label class="description" for="erdt_child_theme_options[apple_touch_icon_ipad_non_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 72x72 pixels, in the webroot directory and named apple-touch-icon-72x72-precomposed.png). Sized for the iPad Non-Retina Screen.' ); ?></label>
 						</td>
 					</tr>
-					<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon 144x144' ); ?></th>
+					<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 144x144' ); ?></th>
 						<td>
 							<input id="erdt_child_theme_options[apple_touch_icon_ipad_retina]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[apple_touch_icon_ipad_retina]" value="1" <?php if($options['apple_touch_icon_ipad_retina'] == TRUE): ?> checked <?php endif; ?> />
 							<label class="description" for="erdt_child_theme_options[apple_touch_icon_ipad_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 144x144 pixels, in the webroot directory and named apple-touch-icon-144x144-precomposed.png). Sized for the iPad Retina Screen.' ); ?></label>
