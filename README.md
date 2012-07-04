@@ -7,9 +7,8 @@ This is a Child Wordpress Theme to (The Erudite - [http://somadesign.ca/projects
 1. Generates a Bit.ly Short URL for a post when published
 2. Adds the Bit.ly Url to the post's page and meta content of the post
 3. Allows you to use your Website as a delegate server for your MyOpenID account
-4. Adds meta tags for Apple Touch icons
+4. Adds meta tags for Apple Touch (iPhone, Retina iPhone, iPad, Retina iPad) icons
 5. Adds some basic SEO meta tags
-6. Adds Meta Tag for Readability Verification
 
 ## To Use ##
 

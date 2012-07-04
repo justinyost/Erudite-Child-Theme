@@ -7,7 +7,7 @@ require_once(CHILD_TEMPLATE_DIR."/library/theme-options.php");
 
 /**
  * add_stylesheets function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -19,17 +19,17 @@ function add_stylesheets() {
 
 /**
  * add_my_open_id_information function.
- * 
+ *
  * @access public
  * @return void
  */
 function add_my_open_id_information(){
 	$options = get_theme_options();
-	
+
 	if(isset($options['open_id_server']) && !is_null($options['open_id_server']) && isset($options['open_id_delegate']) && !is_null($options['open_id_delegate'])):
 		?>
 		<link rel="openid2.provider" href="<?php echo $options['open_id_server']; ?>" />
-    	<link rel="openid2.local_id" href="<?php echo $options['open_id_delegate']; ?>" /> 
+    		<link rel="openid2.local_id" href="<?php echo $options['open_id_delegate']; ?>" />
 		<link rel="openid.server" href="<?php echo $options['open_id_server']; ?>" />
 		<link rel="openid.delegate" href="<?php echo $options['open_id_delegate']; ?>" />
 		<?php
@@ -39,7 +39,7 @@ function add_my_open_id_information(){
 
 /**
  * add_favicons function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -47,13 +47,13 @@ function add_favicons(){
 	?>
 	<link href="<?php echo get_bloginfo('url'); ?>/favicon.ico" rel="shortcut icon" />
 	<?php if(get_iphone_non_retina_icon()): ?>
-		<link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-57x57-precomposed.png" /> 
+		<link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-57x57-precomposed.png" />
 	<?php endif; ?>
 	<?php if(get_iphone_retina_icon()): ?>
-		<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-72x72-precomposed.png" /> 
+		<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-72x72-precomposed.png" />
 	<?php endif; ?>
 	<?php if(get_ipad_non_retina_icon()): ?>
-		<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-114x114-precomposed.png" />	
+		<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-114x114-precomposed.png" />
 	<?php endif; ?>
 	<?php if(get_ipad_retina_icon()): ?>
 		<link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-144x144-precomposed.png" />
@@ -63,15 +63,15 @@ function add_favicons(){
 
 /**
  * add_meta_tags function.
- * 
+ *
  * @access public
  * @return void
  */
 function add_meta_tags(){
-	
+
 	global $post;
 	$options = get_theme_options();
-	
+
 	if(is_single()){
 		?>
 		<meta name="description" content="<?php echo $post->post_excerpt; ?>" />
@@ -86,14 +86,11 @@ function add_meta_tags(){
 		<meta name="description" content="<?php echo get_option('blogdescription', "Just another WordPress Blog."); ?>" />
 		<?php
 	} else if(is_page()) {
-	
+
 	} else {
-	
+
 	}
 	?>
-	<?php if(is_readability_set()): ?>
-		<meta name="readability-verification" content="<?php echo get_readability_verification_code(); ?>"/>
-	<?php endif; ?>
 	<meta property="og:site_name" content="<?php echo get_option('blogname'); ?>" />
 	<meta property="og:type" content="blog" />
 	<?php
@@ -101,7 +98,7 @@ function add_meta_tags(){
 
 /**
  * get_post_tags function.
- * 
+ *
  * @access public
  * @param mixed $post_ID (default: null)
  * @return void
@@ -118,7 +115,7 @@ function get_post_tags($post_ID = null){
 
 /**
  * insert_short_url function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -134,7 +131,7 @@ function insert_short_url(){
 
 /**
  * get_author_complete_name function.
- * 
+ *
  * @access public
  * @param mixed $author_ID (default: null)
  * @return void
@@ -146,33 +143,8 @@ function get_author_complete_name($author_ID = null){
 }
 
 /**
- * is_readability_set function.
- * 
- * @access private
- * @return void
- */
-function is_readability_set(){
-	$options = get_theme_options();
-	return (
-		isset($options['readability_verification_code']) &&
-		!empty($options['readability_verification_code'])
-	);
-}
-
-/**
- * get_readability_verification_code function.
- * 
- * @access private
- * @return void
- */
-function get_readability_verification_code(){
-	$options = get_theme_options();
-	return $options['readability_verification_code'];
-}
-
-/**
  * get_iphone_non_retina_icon function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -183,7 +155,7 @@ function get_iphone_non_retina_icon() {
 
 /**
  * get_iphone_retina_icon function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -194,7 +166,7 @@ function get_iphone_retina_icon() {
 
 /**
  * get_ipad_non_retina_icon function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -205,7 +177,7 @@ function get_ipad_non_retina_icon() {
 
 /**
  * get_ipad_retina_icon function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -218,26 +190,26 @@ function get_ipad_retina_icon() {
  * create_short_url function.
  *
  * Creates a Short Url for the Post
- * 
+ *
  * @access private
  * @param mixed $post_ID (default: null)
  * @return void
  */
-function create_short_url($post_ID = null){	
+function create_short_url($post_ID = null){
 	$longURL = get_bloginfo('url').'?p='.$post_ID;
-	
+
 	$shortURL = null;
 	if( is_bitly_information_set() ) {
 		$options = get_theme_options();
-		
+
 		$login = $options['bitly_username'];
 		$apikey = $options['bitly_api_key'];
-		
+
 		$shortURL = get_bitly_url($longURL, $login, $apikey);
 	} else {
 		$shortURL = $longURL;
 	}
-	
+
 	// adding the short URL to a custom field called bitlyURL
 	update_post_meta($post_ID, 'bitlyURL', $shortURL);
 }
@@ -246,13 +218,13 @@ function create_short_url($post_ID = null){
  * is_bitly_information_set function.
  *
  * Return if the Bit.ly Information is set
- * 
+ *
  * @access private
  * @return void
  */
 function is_bitly_information_set(){
 	$options = get_theme_options();
-	
+
 	return (
 		isset($options['bitly_username']) &&
 		isset($options['bitly_api_key']) &&
@@ -263,7 +235,7 @@ function is_bitly_information_set(){
 
 /**
  * get_bitly_url function.
- * 
+ *
  * Generate the Bitly Short URL
  *
  * @access private
@@ -273,10 +245,10 @@ function is_bitly_information_set(){
  * @return void
  */
 function get_bitly_url($longURL, $login, $apikey){
-	
+
 	// This is the API call to fetch the shortened URL
 	$apiurl = 'http://api.bit.ly/v3/shorten?longUrl='.urlencode($longURL).'&login='.$login.'&apiKey='.$apikey.'&format=json';
- 
+
 	// Use cURL to return from the API
 	$curl = curl_init();
 	curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
@@ -284,14 +256,14 @@ function get_bitly_url($longURL, $login, $apikey){
 	curl_setopt($curl, CURLOPT_URL, $apiurl);
 	$results = json_decode(curl_exec($curl));
 	curl_close($curl);
- 
+
 	$shortURL =  $results->data->url;
 	return $shortURL;
 }
 
 /**
  * extra_contact_info function.
- * 
+ *
  * Set Extra Contact Information
  *
  * @access public
@@ -310,7 +282,7 @@ function extra_contact_info($contactmethods) {
 
 /**
  * return_short_url function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -326,7 +298,7 @@ function return_short_url() {
 
 /**
  * return_short_link function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -339,13 +311,13 @@ function return_short_link(){
 
 /**
  * censored_bar function.
- * 
+ *
  * @access public
  * @return void
  */
 function censored_bar(){
 	$options = get_theme_options();
-	
+
 	if($options['censored_bar'] == TRUE){
 		?><a style="width:50%;height:77px;vertical-align:middle;text-align:center;background-color:#000;position:absolute;z-index:5555;top:0px;left:0px;background-image:url(http://americancensorship.org/images/stop-censorship-small.png);background-position:center center;background-repeat:no-repeat;margin:0 25%;" href="http://americancensorship.org"></a><?php
 	}
@@ -353,7 +325,7 @@ function censored_bar(){
 
 /**
  * add_to_head function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -367,7 +339,7 @@ function add_to_head(){
 
 /**
  * add_to_sidebar function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -376,7 +348,7 @@ function add_to_sidebar(){
 
 /**
  * add_to_footer function.
- * 
+ *
  * @access public
  * @return void
  */
@@ -386,7 +358,7 @@ function add_to_footer(){
 
 /**
  * add_on_publish function.
- * 
+ *
  * @access public
  * @param mixed $post_ID
  * @return void
@@ -397,7 +369,7 @@ function add_on_publish($post_ID) {
 
 /**
  * get_theme_options function.
- * 
+ *
  * @access public
  * @return void
  */

@@ -46,14 +46,14 @@ function theme_options_do_page() {
 						<label class="description" for="erdt_child_theme_options[bitly_username]"><?php _e( 'Enter your <a href="http://bit.ly/a/your_api_key" target="_blank" title="Get your Bit.ly Username">Bit.ly Username</a>' ); ?></label>
 					</td>
 				</tr>
-				
+
 				<tr valign="top"><th scope="row"><?php _e( 'Bit.ly API Key' ); ?></th>
 					<td>
 						<input id="erdt_child_theme_options[bitly_api_key]" class="regular-text" type="text" name="erdt_child_theme_options[bitly_api_key]" value="<?php esc_attr_e( $options['bitly_api_key'] ); ?>" />
 						<label class="description" for="erdt_child_theme_options[bitly_api_key]"><?php _e( 'Enter your <a href="http://bit.ly/a/your_api_key" target="_blank" title="Get your Bit.ly API Key">Bit.ly API Key</a>' ); ?></label>
 					</td>
 				</tr>
-				
+
 				<tr valign="top"><th scope="row"><?php _e( 'Open ID Server URL' ); ?></th>
 					<td>
 						<input id="erdt_child_theme_options[open_id_server]" class="regular-text" type="text" name="erdt_child_theme_options[open_id_server]" value="<?php esc_attr_e( $options['open_id_server'] ); ?>" />
@@ -66,15 +66,9 @@ function theme_options_do_page() {
 						<label class="description" for="erdt_child_theme_options[open_id_delegate]"><?php _e( 'Enter in your OpenID Delegate Url, to use your site\'s url as a delegate server. For example if using MyOpenId, enter in http://username.myopenid.com/. More info here: <a href="http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication" target="_blank" title="OpenID Delegate Server">http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication</a>' ); ?></label>
 					</td>
 				</tr>
-				
-				<tr valign="top"><th scope="row"><?php _e( 'Readability Verification Code' ); ?></th>
-					<td>
-						<input id="erdt_child_theme_options[readability_verification_code]" class="regular-text" type="text" name="erdt_child_theme_options[readability_verification_code]" value="<?php esc_attr_e( $options['readability_verification_code'] ); ?>" />
-						<label class="description" for="erdt_child_theme_options[readability_verification_code]"><?php _e( 'Enter your <a href="https://www.readability.com/publishers/register/" target="_blank" title="Get Your Readability Verification Code">Readability Verification Code</a>' ); ?></label>
-					</td>
-				</tr>
+
 			</table>
-			
+
 			<h2>Meta Settings</h2>
 				<table class="form-table">
 					<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 57x57' ); ?></th>
@@ -102,7 +96,7 @@ function theme_options_do_page() {
 						</td>
 					</tr>
 				</table>
-			
+
 			<h2>Other Settings</h2>
 				<table class="form-table">
 					<tr valign="top"><th scope="row"><?php _e( 'Censored Website Bar' ); ?></th>
@@ -112,7 +106,7 @@ function theme_options_do_page() {
 						</td>
 					</tr>
 				</table>
-			
+
 
 			<p class="submit">
 				<input type="submit" class="button-primary" value="<?php _e( 'Save Options' ); ?>" />
@@ -126,18 +120,17 @@ function theme_options_do_page() {
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function theme_options_validate( $input ) {
-	
+
 	//Sanitize Input Text
 	$input['bitly_username'] = wp_filter_nohtml_kses( $input['bitly_username'] );
 	$input['bitly_api_key'] = wp_filter_nohtml_kses( $input['bitly_api_key'] );
 	$input['open_id_server'] = wp_filter_nohtml_kses( $input['open_id_server'] );
 	$input['open_id_delegate'] = wp_filter_nohtml_kses( $input['open_id_delegate'] );
-	$input['readability_verification_code'] = wp_filter_nohtml_kses( $input['readability_verification_code'] );
-	
+
 	if ( ! isset( $input['censored_bar'] ) )
 		$input['censored_bar'] = null;
 	$input['censored_bar'] = ( $input['censored_bar'] == 1 ? 1 : 0 );
-	
+
 	/*
 	// Our checkbox value is either 0 or 1
 	if ( ! isset( $input['option1'] ) )
