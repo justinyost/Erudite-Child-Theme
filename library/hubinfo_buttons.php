@@ -6,16 +6,16 @@ function hubinfo_button($userName = null, $repoName = null, $twitterUsername = n
 	$scriptString .= '<script type="text/javascript">';
 	$scriptString .= 'jQuery(document).ready(function(){';
 	$scriptString .= '
-	var hubInfoDiv = jQuery("div.hubInfo#' . $randomValue . '").hubInfo({
+	var hubInfoDiv' . $randomValue . ' = jQuery("div.hubInfo#' . $randomValue . '").hubInfo({
 		user: "' . $userName . '",
 		repo: "' . $repoName . '"
 	});';
 
 	if(!empty($twitterUsername)) {
 		$scriptString .= '
-		hubInfoDiv.on(\'render\', function() {
+		hubInfoDiv' . $randomValue . '.on(\'render\', function() {
 			jQuery(\'<a href="https://twitter.com/share" class="twitter-share-button" data-via="' . $twitterUsername . '">Tweet</a>\')
-				.insertAfter(\'.repo-forks\');
+				.insertAfter("div.hubInfo#' . $randomValue . ' .repo-forks");
 			!function(d,s,id){
 				var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
 			}(document,"script","twitter-wjs");

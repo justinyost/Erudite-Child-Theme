@@ -61,3 +61,12 @@
   font-size: 12px;
   color: #333;
 }
+
+/* Dark Color Settings */
+.dark .github-repo .repo-commit .repo-commit-message {
+  color: white;
+}
+
+.dark .github-repo .repo-commit .repo-commit-date {
+  color: #EEC;
+}
