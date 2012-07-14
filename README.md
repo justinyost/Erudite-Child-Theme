@@ -9,6 +9,11 @@ This is a Child Wordpress Theme to (The Erudite - [http://somadesign.ca/projects
 3. Allows you to use your Website as a delegate server for your MyOpenID account
 4. Adds meta tags for Apple Touch (iPhone, Retina iPhone, iPad, Retina iPad) icons
 5. Adds some basic SEO meta tags
+6. Adds shortcode [hubinfo user="jtyost2" repo="Erudite-Child-Theme" twitter="jtyost2"]
+	* User is the GitHub Username
+	* Repo is the Repo Name
+	* Twitter (optional) is the twitter username
+	* jQuery Plugin HubInfo from: [http://projects.jga.me/hubinfo/](http://projects.jga.me/hubinfo/)
 
 ## To Use ##
 
