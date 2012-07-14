@@ -1,0 +1,1 @@
+* html .clearfix{height:1%;overflow:visible}*+html .clearfix{min-height:1%}.clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden;font-size:0}.twtr-widget,.footer ul div div.twtr-widget{font-size:12px!important}

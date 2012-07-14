@@ -13,8 +13,15 @@ require_once(CHILD_TEMPLATE_DIR."/library/theme-options.php");
  */
 function add_stylesheets() {
 	?>
-	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/css/erudite-child.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/css/erudite-child.min.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/css/hubinfo.min.css" />
 	<?php
+}
+
+/**
+ * [add_scripts description]
+ */
+function add_scripts() {
 }
 
 /**
@@ -59,6 +66,28 @@ function add_favicons(){
 		<link rel="apple-touch-icon" sizes="144x144" href="<?php echo home_url(); ?>/apple-touch-icon-144x144-precomposed.png" />
 	<?php endif; ?>
 	<?php
+}
+
+/**
+ * [hubinfo description]
+ * @param  [type] $atts [description]
+ * @return [type]       [description]
+ */
+function hubinfo($atts) {
+	extract( shortcode_atts( array(
+		'user' => 'jtyost2',
+		'repo' => 'Erudite-Child-Theme',
+		'twitter' => '',
+	), $atts ) );
+
+	wp_enqueue_script(
+		'hubinfo.min',
+		get_stylesheet_directory_uri() . '/js/hubinfo.min.js',
+		array('jquery')
+	);
+
+	require_once(CHILD_TEMPLATE_DIR."/library/hubinfo_buttons.php");
+	return hubinfo_button($user, $repo, $twitter);
 }
 
 /**
@@ -226,10 +255,10 @@ function is_bitly_information_set(){
 	$options = get_theme_options();
 
 	return (
-		isset($options['bitly_username']) &&
-		isset($options['bitly_api_key']) &&
-		!empty($options['bitly_username']) &&
-		!empty($options['bitly_api_key'])
+		isset($options['bitly_username'])
+		&& isset($options['bitly_api_key'])
+		&& !empty($options['bitly_username'])
+		&& !empty($options['bitly_api_key'])
 	);
 }
 
@@ -335,6 +364,7 @@ function add_to_head(){
 	insert_short_url();
 	add_favicons();
 	add_meta_tags();
+	add_scripts();
 }
 
 /**
@@ -390,5 +420,8 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
 
 //Add Actions
 add_action('publish_post', 'add_on_publish');
+
+//Add Shortcodes
+add_shortcode( 'hubinfo', 'hubinfo' );
 
 ?>
