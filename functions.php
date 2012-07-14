@@ -13,7 +13,7 @@ require_once(CHILD_TEMPLATE_DIR."/library/theme-options.php");
  */
 function add_stylesheets() {
 	?>
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_directory'); ?>/css/erudite-child.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/css/erudite-child.css" />
 	<?php
 }
 
@@ -45,18 +45,18 @@ function add_my_open_id_information(){
  */
 function add_favicons(){
 	?>
-	<link href="<?php echo get_bloginfo('url'); ?>/favicon.ico" rel="shortcut icon" />
+	<link href="<?php echo home_url(); ?>/favicon.ico" rel="shortcut icon" />
 	<?php if(get_iphone_non_retina_icon()): ?>
-		<link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-57x57-precomposed.png" />
+		<link rel="apple-touch-icon" sizes="57x57" href="<?php echo home_url(); ?>/apple-touch-icon-57x57-precomposed.png" />
 	<?php endif; ?>
 	<?php if(get_iphone_retina_icon()): ?>
-		<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-72x72-precomposed.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="<?php echo home_url(); ?>/apple-touch-icon-72x72-precomposed.png" />
 	<?php endif; ?>
 	<?php if(get_ipad_non_retina_icon()): ?>
-		<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-114x114-precomposed.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="<?php echo home_url(); ?>/apple-touch-icon-114x114-precomposed.png" />
 	<?php endif; ?>
 	<?php if(get_ipad_retina_icon()): ?>
-		<link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_bloginfo('url'); ?>/apple-touch-icon-144x144-precomposed.png" />
+		<link rel="apple-touch-icon" sizes="144x144" href="<?php echo home_url(); ?>/apple-touch-icon-144x144-precomposed.png" />
 	<?php endif; ?>
 	<?php
 }
@@ -196,7 +196,7 @@ function get_ipad_retina_icon() {
  * @return void
  */
 function create_short_url($post_ID = null){
-	$longURL = get_bloginfo('url').'?p='.$post_ID;
+	$longURL = home_url().'?p='.$post_ID;
 
 	$shortURL = null;
 	if( is_bitly_information_set() ) {
@@ -292,7 +292,7 @@ function return_short_url() {
 	if(isset($shortURL) && !empty($shortURL)) {
 		 return $shortURL;
 	} else {
-		return get_bloginfo('url').'?p='.$post->ID;
+		return home_url().'?p='.$post->ID;
 	}
 }
 
