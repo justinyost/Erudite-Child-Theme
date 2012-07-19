@@ -14,6 +14,7 @@ This is a Child Wordpress Theme to (The Erudite - [http://somadesign.ca/projects
 	* Repo is the Repo Name
 	* Twitter (optional) is the twitter username
 	* jQuery Plugin HubInfo from: [http://projects.jga.me/hubinfo/](http://projects.jga.me/hubinfo/)
+7. Adds ability to turn on Notification Bars from [The Internet Defense League](http://internetdefenseleague.org/) and [American Censorship](http://americancensorship.org/).
 
 ## To Use ##
 

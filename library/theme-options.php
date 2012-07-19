@@ -105,6 +105,12 @@ function theme_options_do_page() {
 							<label class="description" for="erdt_child_theme_options[censored_bar]"><?php _e( 'Turn on the <a href="http://americancensorship.org/" title="American Censorship Day">Censored Website Bar</a>', 'erudite_child' ); ?></label>
 						</td>
 					</tr>
+					<tr valign="top"><th scope="row"><?php _e( 'Internet Defense League Notification Bar', 'erudite_child' ); ?></th>
+						<td>
+							<input id="erdt_child_theme_options[internet_defense_league]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[internet_defense_league]" value="1" <?php if($options['internet_defense_league'] == TRUE): ?> checked <?php endif; ?> />
+							<label class="description" for="erdt_child_theme_options[internet_defense_league]"><?php _e( 'Turn on the <a href="http://internetdefenseleague.org/" title="Internet Defense League Notification Bar">Internet Defense League Notification Bar</a>', 'erudite_child' ); ?></label>
+						</td>
+					</tr>
 				</table>
 
 
@@ -127,9 +133,15 @@ function theme_options_validate( $input ) {
 	$input['open_id_server'] = wp_filter_nohtml_kses( $input['open_id_server'] );
 	$input['open_id_delegate'] = wp_filter_nohtml_kses( $input['open_id_delegate'] );
 
-	if ( ! isset( $input['censored_bar'] ) )
+	if ( ! isset( $input['censored_bar'] ) ) {
 		$input['censored_bar'] = null;
+	}
 	$input['censored_bar'] = ( $input['censored_bar'] == 1 ? 1 : 0 );
+
+	if ( ! isset( $input['internet_defense_league'] ) ) {
+		$input['internet_defense_league'] = null;
+	}
+	$input['internet_defense_league'] = ( $input['internet_defense_league'] == 1 ? 1 : 0 );
 
 	/*
 	// Our checkbox value is either 0 or 1

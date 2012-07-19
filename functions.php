@@ -22,6 +22,12 @@ function add_stylesheets() {
  * [add_scripts description]
  */
 function add_scripts() {
+	if(internet_defense_league_status()):
+		wp_enqueue_script(
+			'internet_defense_league.min',
+			get_stylesheet_directory_uri() . '/js/internet_defense_league.min.js'
+		);
+	endif;
 }
 
 /**
@@ -213,6 +219,15 @@ function get_ipad_non_retina_icon() {
 function get_ipad_retina_icon() {
 	$options = get_theme_options();
 	return $options['apple_touch_icon_ipad_retina'];
+}
+
+/**
+ * [internet_defense_league_status description]
+ * @return [type] [description]
+ */
+function internet_defense_league_status() {
+	$options = get_theme_options();
+	return $options['internet_defense_league'];
 }
 
 /**
