@@ -143,6 +143,26 @@ function theme_options_validate( $input ) {
 	}
 	$input['internet_defense_league'] = ( $input['internet_defense_league'] == 1 ? 1 : 0 );
 
+	if ( ! isset( $input['apple_touch_icon_iphone_non_retina'] ) ) {
+		$input['apple_touch_icon_iphone_non_retina'] = null;
+	}
+	$input['apple_touch_icon_iphone_non_retina'] = ( $input['apple_touch_icon_iphone_non_retina'] == 1 ? 1 : 0 );
+
+	if ( ! isset( $input['apple_touch_icon_iphone_retina'] ) ) {
+		$input['apple_touch_icon_iphone_retina'] = null;
+	}
+	$input['apple_touch_icon_iphone_retina'] = ( $input['apple_touch_icon_iphone_retina'] == 1 ? 1 : 0 );
+
+	if ( ! isset( $input['apple_touch_icon_ipad_non_retina'] ) ) {
+		$input['apple_touch_icon_ipad_non_retina'] = null;
+	}
+	$input['apple_touch_icon_ipad_non_retina'] = ( $input['apple_touch_icon_ipad_non_retina'] == 1 ? 1 : 0 );
+
+	if ( ! isset( $input['apple_touch_icon_ipad_retina'] ) ) {
+		$input['apple_touch_icon_ipad_retina'] = null;
+	}
+	$input['apple_touch_icon_ipad_retina'] = ( $input['apple_touch_icon_ipad_retina'] == 1 ? 1 : 0 );
+
 	/*
 	// Our checkbox value is either 0 or 1
 	if ( ! isset( $input['option1'] ) )
