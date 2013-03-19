@@ -14,10 +14,10 @@ require_once(CHILD_TEMPLATE_DIR."library/theme-options.php");
  * @return void
  */
 function add_stylesheets() {
-	?>
-	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/css/erudite-child.min.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/css/hubinfo.min.css" />
-	<?php
+	wp_register_style( 'erudite-child.min', ERUDITE_CHILD_THEME_URI."/css/erudite-child.min.css");
+	wp_enqueue_style( 'erudite-child.min' );
+	wp_register_style( 'hubinfo.min', ERUDITE_CHILD_THEME_URI."/css/hubinfo.min.css");
+	wp_enqueue_style( 'hubinfo.min' );
 }
 
 /**
