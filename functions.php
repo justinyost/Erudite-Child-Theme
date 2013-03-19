@@ -44,7 +44,7 @@ function add_my_open_id_information(){
 	if(isset($options['open_id_server']) && !is_null($options['open_id_server']) && isset($options['open_id_delegate']) && !is_null($options['open_id_delegate'])):
 		?>
 		<link rel="openid2.provider" href="<?php echo $options['open_id_server']; ?>" />
-    		<link rel="openid2.local_id" href="<?php echo $options['open_id_delegate']; ?>" />
+		<link rel="openid2.local_id" href="<?php echo $options['open_id_delegate']; ?>" />
 		<link rel="openid.server" href="<?php echo $options['open_id_server']; ?>" />
 		<link rel="openid.delegate" href="<?php echo $options['open_id_delegate']; ?>" />
 		<?php
