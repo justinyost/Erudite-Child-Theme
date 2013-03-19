@@ -1,9 +1,11 @@
 <?php
 //Define the Child Template Directory
-define('CHILD_TEMPLATE_DIR', get_stylesheet_directory() );
+define('CHILD_TEMPLATE_DIR', plugin_dir_path(__FILE__));
+define('ERUDITE_CHILD_THEME_PATH', plugin_dir_path(__FILE__));
+define('ERUDITE_CHILD_THEME_URI', get_stylesheet_directory_uri());
 
 //Require the Theme Options
-require_once(CHILD_TEMPLATE_DIR."/library/theme-options.php");
+require_once(CHILD_TEMPLATE_DIR."library/theme-options.php");
 
 /**
  * add_stylesheets function.
@@ -92,7 +94,7 @@ function hubinfo($atts) {
 		array('jquery')
 	);
 
-	require_once(CHILD_TEMPLATE_DIR."/library/hubinfo_buttons.php");
+	require_once(CHILD_TEMPLATE_DIR."library/hubinfo_buttons.php");
 	return hubinfo_button($user, $repo, $twitter);
 }
 
