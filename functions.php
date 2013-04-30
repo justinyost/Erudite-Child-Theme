@@ -343,6 +343,22 @@ function return_short_url() {
 }
 
 /**
+ * return_short_url function.
+ *
+ * @access public
+ * @return void
+ */
+function return_quickie_link() {
+	global $post;
+	$quickLink = get_post_meta($post->ID, 'quickLink', true);
+	if(isset($quickLink) && !empty($quickLink)) {
+		 return $quickLink;
+	} else {
+		return NULL;
+	}
+}
+
+/**
  * return_short_link function.
  *
  * @access public
@@ -366,6 +382,15 @@ function censored_bar(){
 
 	if($options['censored_bar'] == TRUE){
 		?><a style="width:50%;height:77px;vertical-align:middle;text-align:center;background-color:#000;position:absolute;z-index:5555;top:0px;left:0px;background-image:url(http://americancensorship.org/images/stop-censorship-small.png);background-position:center center;background-repeat:no-repeat;margin:0 25%;" href="http://americancensorship.org"></a><?php
+	}
+}
+
+function comments_status() {
+	$options = get_theme_options();
+	if(array_key_exists('comments_disabled', $options) && $options['comments_disabled']) {
+		return FALSE;
+	} else {
+		return TRUE;
 	}
 }
 
@@ -422,6 +447,9 @@ function add_on_publish($post_ID) {
  */
 function get_theme_options() {
 	$options = get_option('erdt_child_theme_options');
+	if(!$options) {
+		return array();
+	}
 	return $options;
 }
 
@@ -440,5 +468,43 @@ add_action('publish_post', 'add_on_publish');
 
 //Add Shortcodes
 add_shortcode( 'hubinfo', 'hubinfo' );
+
+class EruditeChildThemeFunctions {
+
+	private static $instance = false;
+
+  public function __construct() {
+  	self::$instance = $this;
+    add_action('init', array($this, 'init'));
+	}
+
+	/**
+	 * [init description]
+	 * @return [type] [description]
+	 */
+	public function init() {
+		//Add Filters
+		add_filter('the_permalink_rss', array($this, 'quickie_permalink_rss'));
+	}
+
+	public function quickie_permalink_rss($content) {
+		global $wp_query;
+		$postid = $wp_query->post->ID;
+		$link = get_post_meta($postid, 'quickLink', true);
+
+		if(is_feed()) {
+				if($link !== '') {
+					$content = $link;
+				} else {
+					$content = get_permalink($postid);
+			}
+		}
+		return $content;
+	}
+}
+
+if (class_exists('EruditeChildThemeFunctions')) {
+	$_EruditeChildThemeFunctions = new EruditeChildThemeFunctions();
+}
 
 ?>

@@ -70,48 +70,58 @@ function theme_options_do_page() {
 			</table>
 
 			<h2>Meta Settings</h2>
-				<table class="form-table">
-					<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 57x57', 'erudite_child' ); ?></th>
-						<td>
-							<input id="erdt_child_theme_options[apple_touch_icon_iphone_non_retina]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[apple_touch_icon_iphone_non_retina]" value="1" <?php if($options['apple_touch_icon_iphone_non_retina'] == TRUE): ?> checked <?php endif; ?> />
-							<label class="description" for="erdt_child_theme_options[apple_touch_icon_iphone_non_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 57x57 pixels, in the webroot directory and named apple-touch-icon-57x57-precomposed.png). Sized for the iPhone Non-Retina Screen.', 'erudite_child' ); ?></label>
-						</td>
-					</tr>
-					<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 114x114', 'erudite_child' ); ?></th>
-						<td>
-							<input id="erdt_child_theme_options[apple_touch_icon_iphone_retina]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[apple_touch_icon_iphone_retina]" value="1" <?php if($options['apple_touch_icon_iphone_retina'] == TRUE): ?> checked <?php endif; ?> />
-							<label class="description" for="erdt_child_theme_options[apple_touch_icon_iphone_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 114x114 pixels, in the webroot directory and named apple-touch-icon-114x114-precomposed.png). Sized for the iPhone Retina Screen.', 'erudite_child' ); ?></label>
-						</td>
-					</tr>
-					<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 72x72', 'erudite_child' ); ?></th>
-						<td>
-							<input id="erdt_child_theme_options[apple_touch_icon_ipad_non_retina]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[apple_touch_icon_ipad_non_retina]" value="1" <?php if($options['apple_touch_icon_ipad_non_retina'] == TRUE): ?> checked <?php endif; ?> />
-							<label class="description" for="erdt_child_theme_options[apple_touch_icon_ipad_non_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 72x72 pixels, in the webroot directory and named apple-touch-icon-72x72-precomposed.png). Sized for the iPad Non-Retina Screen.', 'erudite_child' ); ?></label>
-						</td>
-					</tr>
-					<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 144x144', 'erudite_child' ); ?></th>
-						<td>
-							<input id="erdt_child_theme_options[apple_touch_icon_ipad_retina]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[apple_touch_icon_ipad_retina]" value="1" <?php if($options['apple_touch_icon_ipad_retina'] == TRUE): ?> checked <?php endif; ?> />
-							<label class="description" for="erdt_child_theme_options[apple_touch_icon_ipad_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 144x144 pixels, in the webroot directory and named apple-touch-icon-144x144-precomposed.png). Sized for the iPad Retina Screen.', 'erudite_child' ); ?></label>
-						</td>
-					</tr>
-				</table>
+			<table class="form-table">
+				<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 57x57', 'erudite_child' ); ?></th>
+					<td>
+						<input id="erdt_child_theme_options[apple_touch_icon_iphone_non_retina]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[apple_touch_icon_iphone_non_retina]" value="1" <?php if($options['apple_touch_icon_iphone_non_retina'] == TRUE): ?> checked <?php endif; ?> />
+						<label class="description" for="erdt_child_theme_options[apple_touch_icon_iphone_non_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 57x57 pixels, in the webroot directory and named apple-touch-icon-57x57-precomposed.png). Sized for the iPhone Non-Retina Screen.', 'erudite_child' ); ?></label>
+					</td>
+				</tr>
+				<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 114x114', 'erudite_child' ); ?></th>
+					<td>
+						<input id="erdt_child_theme_options[apple_touch_icon_iphone_retina]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[apple_touch_icon_iphone_retina]" value="1" <?php if($options['apple_touch_icon_iphone_retina'] == TRUE): ?> checked <?php endif; ?> />
+						<label class="description" for="erdt_child_theme_options[apple_touch_icon_iphone_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 114x114 pixels, in the webroot directory and named apple-touch-icon-114x114-precomposed.png). Sized for the iPhone Retina Screen.', 'erudite_child' ); ?></label>
+					</td>
+				</tr>
+				<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 72x72', 'erudite_child' ); ?></th>
+					<td>
+						<input id="erdt_child_theme_options[apple_touch_icon_ipad_non_retina]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[apple_touch_icon_ipad_non_retina]" value="1" <?php if($options['apple_touch_icon_ipad_non_retina'] == TRUE): ?> checked <?php endif; ?> />
+						<label class="description" for="erdt_child_theme_options[apple_touch_icon_ipad_non_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 72x72 pixels, in the webroot directory and named apple-touch-icon-72x72-precomposed.png). Sized for the iPad Non-Retina Screen.', 'erudite_child' ); ?></label>
+					</td>
+				</tr>
+				<tr valign="top"><th scope="row"><?php _e( 'Apple Touch Icon - 144x144', 'erudite_child' ); ?></th>
+					<td>
+						<input id="erdt_child_theme_options[apple_touch_icon_ipad_retina]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[apple_touch_icon_ipad_retina]" value="1" <?php if($options['apple_touch_icon_ipad_retina'] == TRUE): ?> checked <?php endif; ?> />
+						<label class="description" for="erdt_child_theme_options[apple_touch_icon_ipad_retina]"><?php _e( 'Turn on the Apple Touch icon (Should be 144x144 pixels, in the webroot directory and named apple-touch-icon-144x144-precomposed.png). Sized for the iPad Retina Screen.', 'erudite_child' ); ?></label>
+					</td>
+				</tr>
+			</table>
 
 			<h2>Other Settings</h2>
-				<table class="form-table">
-					<tr valign="top"><th scope="row"><?php _e( 'Censored Website Bar', 'erudite_child' ); ?></th>
-						<td>
-							<input id="erdt_child_theme_options[censored_bar]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[censored_bar]" value="1" <?php if($options['censored_bar'] == TRUE): ?> checked <?php endif; ?> />
-							<label class="description" for="erdt_child_theme_options[censored_bar]"><?php _e( 'Turn on the <a href="http://americancensorship.org/" title="American Censorship Day">Censored Website Bar</a>', 'erudite_child' ); ?></label>
-						</td>
-					</tr>
-					<tr valign="top"><th scope="row"><?php _e( 'Internet Defense League Notification Bar', 'erudite_child' ); ?></th>
-						<td>
-							<input id="erdt_child_theme_options[internet_defense_league]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[internet_defense_league]" value="1" <?php if($options['internet_defense_league'] == TRUE): ?> checked <?php endif; ?> />
-							<label class="description" for="erdt_child_theme_options[internet_defense_league]"><?php _e( 'Turn on the <a href="http://internetdefenseleague.org/" title="Internet Defense League Notification Bar">Internet Defense League Notification Bar</a>', 'erudite_child' ); ?></label>
-						</td>
-					</tr>
-				</table>
+			<table class="form-table">
+				<tr valign="top"><th scope="row"><?php _e( 'Censored Website Bar', 'erudite_child' ); ?></th>
+					<td>
+						<input id="erdt_child_theme_options[censored_bar]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[censored_bar]" value="1" <?php if($options['censored_bar'] == TRUE): ?> checked <?php endif; ?> />
+						<label class="description" for="erdt_child_theme_options[censored_bar]"><?php _e( 'Turn on the <a href="http://americancensorship.org/" title="American Censorship Day">Censored Website Bar</a>', 'erudite_child' ); ?></label>
+					</td>
+				</tr>
+				<tr valign="top"><th scope="row"><?php _e( 'Internet Defense League Notification Bar', 'erudite_child' ); ?></th>
+					<td>
+						<input id="erdt_child_theme_options[internet_defense_league]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[internet_defense_league]" value="1" <?php if($options['internet_defense_league'] == TRUE): ?> checked <?php endif; ?> />
+						<label class="description" for="erdt_child_theme_options[internet_defense_league]"><?php _e( 'Turn on the <a href="http://internetdefenseleague.org/" title="Internet Defense League Notification Bar">Internet Defense League Notification Bar</a>', 'erudite_child' ); ?></label>
+					</td>
+				</tr>
+			</table>
+
+			<h2>Reading/Writing Settings</h2>
+			<table class="form-table">
+				<tr valign="top"><th scope="row"><?php _e( 'Disable Comments', 'erudite_child' ); ?></th>
+					<td>
+						<input id="erdt_child_theme_options[comments_disabled]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[comments_disabled]" value="1" <?php if($options['comments_disabled'] == TRUE): ?> checked <?php endif; ?> />
+						<label class="description" for="erdt_child_theme_options[comments_disabled]"><?php _e( 'Hide the comment section on posts.', 'erudite_child' ); ?></label>
+					</td>
+				</tr>
+			</table>
 
 
 			<p class="submit">
@@ -137,6 +147,11 @@ function theme_options_validate( $input ) {
 		$input['censored_bar'] = null;
 	}
 	$input['censored_bar'] = ( $input['censored_bar'] == 1 ? 1 : 0 );
+
+	if ( ! isset( $input['comments_disabled'] ) ) {
+		$input['comments_disabled'] = null;
+	}
+	$input['comments_disabled'] = ( $input['comments_disabled'] == 1 ? 1 : 0 );
 
 	if ( ! isset( $input['internet_defense_league'] ) ) {
 		$input['internet_defense_league'] = null;

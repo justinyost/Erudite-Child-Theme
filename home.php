@@ -1,15 +1,24 @@
 <?php get_header() ?>
 <div id="container">
 	<div id="content" role="main">
-<?php 
+<?php
 $first = 0; //set a counter to help add post classes below ?>
 <?php while ( have_posts() ) : the_post() ?>
-<?php $first++; 
+<?php $first++;
 if ($first == 1 && !is_paged() ) { //this is for the first post on the homepage only ?>
 	<?php erdt_epigraph() ?>
 	<div id="post-<?php the_ID() ?>" <?php post_class("first-post") ?>>
 		<h2 class="entry-title">
-			<a href="<?php the_permalink() ?>" title="<?php printf( __('Permalink to %s', 'erudite'), the_title_attribute('echo=0') ) ?>" rel="bookmark"><?php the_title() ?></a>
+			<?php $quickLink = return_quickie_link(); ?>
+			<?php if(!empty($quickLink)): ?>
+				<a title="<?php printf( __('Permalink to %s', 'erudite'), the_title_attribute('echo=0') ) ?>" href="<?php echo $quickLink; ?>">
+					<?php the_title() ?>
+				</a>
+			<?php else: ?>
+				<a href="<?php the_permalink() ?>" title="<?php printf( __('Permalink to %s', 'erudite'), the_title_attribute('echo=0') ) ?>" rel="bookmark">
+					<?php the_title() ?>
+				</a>
+			<?php endif; ?>
 		</h2>
 		<div class="entry-content">
 <?php the_content( __( 'Read More <span class="meta-nav">&rarr;</span>', 'erudite' ) );
@@ -18,7 +27,16 @@ if ($first == 1 && !is_paged() ) { //this is for the first post on the homepage 
 	<?php $home_pager = ( ! is_paged() ) ? "home-post home-post-".$first : ''; //add home-post classes on front page only ?>
 	<div id="post-<?php the_ID() ?>" <?php post_class($home_pager); ?>>
 		<h3 class="entry-title">
-			<a href="<?php the_permalink() ?>" title="<?php printf( __('Permalink to %s', 'erudite'), the_title_attribute('echo=0') ) ?>" rel="bookmark"><?php the_title() ?></a>
+			<?php $quickLink = return_quickie_link(); ?>
+			<?php if(!empty($quickLink)): ?>
+				<a title="<?php printf( __('Permalink to %s', 'erudite'), the_title_attribute('echo=0') ) ?>" href="<?php echo $quickLink; ?>">
+					<?php the_title() ?>
+				</a>
+			<?php else: ?>
+				<a href="<?php the_permalink() ?>" title="<?php printf( __('Permalink to %s', 'erudite'), the_title_attribute('echo=0') ) ?>" rel="bookmark">
+					<?php the_title() ?>
+				</a>
+			<?php endif; ?>
 		</h3>
 		<div class="entry-content">
 			<?php the_excerpt(); ?>

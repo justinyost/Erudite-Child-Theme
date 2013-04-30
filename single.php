@@ -1,12 +1,19 @@
 <?php get_header() ?>
-
 	<div id="container">
 		<div id="content" role="main">
-
-<?php the_post() ?>
+			<?php the_post() ?>
 			<?php erdt_epigraph() ?>
 			<div id="post-<?php the_ID() ?>" <?php post_class() ?>>
-				<h2 class="entry-title instapaper_title"><?php the_title() ?></h2>
+				<?php $quickLink = return_quickie_link(); ?>
+				<h2 class="entry-title instapaper_title">
+					<?php if(!empty($quickLink)): ?>
+						<a title="<?php the_title() ?>" href="<?php echo $quickLink; ?>">
+							<?php the_title() ?>
+						</a>
+					<?php else: ?>
+						<a title="<?php the_title() ?>" href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title() ?></a>
+					<?php endif; ?>
+				</h2>
 				<div class="entry-content instapaper_body">
 					<?php the_content() ?>
 					<?php wp_link_pages('before=<div class="page-link instapaper_ignore">' . __( 'Pages:', 'erudite' ) . '&after=</div>') ?>
@@ -25,7 +32,6 @@
 					<span class="comments-link"><?php comments_popup_link( __( 'Comments (0)', 'erudite' ), __( 'Comments (1)', 'erudite' ), __( 'Comments (%)', 'erudite' ) ) ?></span>
 					<span class="meta-sep">|</span>
 					<iframe border="0" scrolling="no" width="78" height="17" allowtransparency="true" frameborder="0" style="margin-bottom: -3px; z-index: 1338; border: 0px; background-color: transparent; overflow: hidden;" src="http://www.instapaper.com/e2?url=<?php echo urlencode(get_post_permalink()); ?>&title=<?php echo urlencode(the_title_attribute('echo=0')); ?>&description=<?php echo urlencode(get_the_excerpt()); ?>"></iframe>
-					
 				</div>
 			</div><!-- .post -->
 
@@ -34,7 +40,9 @@
 				<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">&rarr;</span>' ) ?></div>
 			</div>
 
-			<?php comments_template() ?>
+			<?php if(comments_status()): ?>
+				<?php comments_template() ?>
+			<?php endif; ?>
 
 		</div><!-- #content -->
 	</div><!-- #container -->
