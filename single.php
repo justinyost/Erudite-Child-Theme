@@ -42,6 +42,8 @@
 
 			<?php if(comments_status()): ?>
 				<?php comments_template() ?>
+			<?php else: ?>
+				<div id="comments"></div>
 			<?php endif; ?>
 
 		</div><!-- #content -->
