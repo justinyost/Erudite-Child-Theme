@@ -29,7 +29,9 @@
 					<span class="meta-sep">|</span>
 					<span class="meta-shortlink">Short Link <?php echo return_short_link(); ?></span>
 					<?php edit_post_link( __( 'Edit', 'erudite' ), "\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
-					<span class="comments-link"><?php comments_popup_link( __( 'Comments (0)', 'erudite' ), __( 'Comments (1)', 'erudite' ), __( 'Comments (%)', 'erudite' ) ) ?></span>
+					<?php if(comments_status()): ?>
+						<span class="comments-link"><?php comments_popup_link( __( 'Comments (0)', 'erudite' ), __( 'Comments (1)', 'erudite' ), __( 'Comments (%)', 'erudite' ) ) ?></span>
+					<?php endif; ?>
 					<span class="meta-sep">|</span>
 					<iframe border="0" scrolling="no" width="78" height="17" allowtransparency="true" frameborder="0" style="margin-bottom: -3px; z-index: 1338; border: 0px; background-color: transparent; overflow: hidden;" src="http://www.instapaper.com/e2?url=<?php echo urlencode(get_post_permalink()); ?>&title=<?php echo urlencode(the_title_attribute('echo=0')); ?>&description=<?php echo urlencode(get_the_excerpt()); ?>"></iframe>
 				</div>
