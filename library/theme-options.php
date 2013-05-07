@@ -97,6 +97,16 @@ function theme_options_do_page() {
 				</tr>
 			</table>
 
+			<h2>Reading/Writing Settings</h2>
+			<table class="form-table">
+				<tr valign="top"><th scope="row"><?php _e( 'Disable Comments', 'erudite_child' ); ?></th>
+					<td>
+						<input id="erdt_child_theme_options[comments_disabled]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[comments_disabled]" value="1" <?php if($options['comments_disabled'] == TRUE): ?> checked <?php endif; ?> />
+						<label class="description" for="erdt_child_theme_options[comments_disabled]"><?php _e( 'Hide the comment section on posts.', 'erudite_child' ); ?></label>
+					</td>
+				</tr>
+			</table>
+
 			<h2>Other Settings</h2>
 			<table class="form-table">
 				<tr valign="top"><th scope="row"><?php _e( 'Censored Website Bar', 'erudite_child' ); ?></th>
@@ -109,16 +119,6 @@ function theme_options_do_page() {
 					<td>
 						<input id="erdt_child_theme_options[internet_defense_league]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[internet_defense_league]" value="1" <?php if($options['internet_defense_league'] == TRUE): ?> checked <?php endif; ?> />
 						<label class="description" for="erdt_child_theme_options[internet_defense_league]"><?php _e( 'Turn on the <a href="http://internetdefenseleague.org/" title="Internet Defense League Notification Bar">Internet Defense League Notification Bar</a>', 'erudite_child' ); ?></label>
-					</td>
-				</tr>
-			</table>
-
-			<h2>Reading/Writing Settings</h2>
-			<table class="form-table">
-				<tr valign="top"><th scope="row"><?php _e( 'Disable Comments', 'erudite_child' ); ?></th>
-					<td>
-						<input id="erdt_child_theme_options[comments_disabled]" class="regular-checkbox" type="checkbox" name="erdt_child_theme_options[comments_disabled]" value="1" <?php if($options['comments_disabled'] == TRUE): ?> checked <?php endif; ?> />
-						<label class="description" for="erdt_child_theme_options[comments_disabled]"><?php _e( 'Hide the comment section on posts.', 'erudite_child' ); ?></label>
 					</td>
 				</tr>
 			</table>

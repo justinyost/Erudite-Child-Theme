@@ -7,11 +7,11 @@
 				<?php $quickLink = return_quickie_link(); ?>
 				<h2 class="entry-title instapaper_title">
 					<?php if(!empty($quickLink)): ?>
-						<a title="<?php the_title() ?>" href="<?php echo $quickLink; ?>">
+						<a title="<?php the_title_attribute() ?>" href="<?php echo $quickLink; ?>">
 							<?php the_title() ?>
 						</a>
 					<?php else: ?>
-						<a title="<?php the_title() ?>" href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title() ?></a>
+						<a title="<?php the_title_attribute() ?>" href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title() ?></a>
 					<?php endif; ?>
 				</h2>
 				<div class="entry-content instapaper_body">

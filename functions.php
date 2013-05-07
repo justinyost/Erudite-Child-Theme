@@ -474,8 +474,8 @@ class EruditeChildThemeFunctions {
 	private static $instance = false;
 
   public function __construct() {
-  	self::$instance = $this;
-    add_action('init', array($this, 'init'));
+  	//self::$instance = &$this;
+    add_action('init', array(&$this, 'init'));
 	}
 
 	/**
@@ -484,14 +484,11 @@ class EruditeChildThemeFunctions {
 	 */
 	public function init() {
 		//Add Filters
-		add_filter('the_permalink_rss', array($this, 'quickie_permalink_rss'));
+		add_filter('the_permalink_rss', array(&$this, 'quick_link_permalink_rss'));
 	}
 
-	public function quickie_permalink_rss($content) {
-		global $wp_query;
-		$postid = $wp_query->post->ID;
-		$link = get_post_meta($postid, 'quickLink', true);
-
+	public function quick_link_permalink_rss($content) {
+		$link = get_post_meta($this->_return_post_id, 'quickLink', true);
 		if(is_feed()) {
 				if($link !== '') {
 					$content = $link;
@@ -501,10 +498,17 @@ class EruditeChildThemeFunctions {
 		}
 		return $content;
 	}
+
+	public function _return_post_id() {
+		global $wp_query;
+		$postId = $wp_query->post->ID;
+		return $postId;
+	}
 }
 
 if (class_exists('EruditeChildThemeFunctions')) {
 	$_EruditeChildThemeFunctions = new EruditeChildThemeFunctions();
+	$_EruditeChildThemeFunctions->init();
 }
 
 ?>
