@@ -1,7 +1,9 @@
-#Erudite Child Theme#
+# Erudite Child Theme #
+
+This project is no longer actively maintained.
 
 ## About ##
-This is a Child Wordpress Theme to (The Erudite - [http://somadesign.ca/projects/the-erudite/](http://somadesign.ca/projects/the-erudite/)) to customize Yostivanich.com
+This is a Child Wordpress Theme to The Erudite - [http://somadesign.ca/projects/the-erudite/](http://somadesign.ca/projects/the-erudite/) to customize Yostivanich.com
 
 ## What it Does ##
 1. Generates a Bit.ly Short URL for a post when published
